@@ -85,7 +85,7 @@ public class LoginController {
      */
     @RequestMapping("/")
     public String index(){
-        return "search";
+        return "hello";
     }
 
 //    /**

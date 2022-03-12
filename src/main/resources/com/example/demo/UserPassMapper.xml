@@ -4,18 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.UserPassMapper">
     <resultMap id="userPassResultMap" type="com.example.demo.UserPass" >
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="pass" property="pass" jdbcType="VARCHAR" />
+        <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+        <result column="user_pass" property="user_pass" jdbcType="VARCHAR" />
     </resultMap>
     <select id="findByName" resultMap="userPassResultMap">
-        SELECT name, pass FROM USER_PASS WHERE name = #{name}
+        SELECT user_name, user_pass FROM USER_PASS WHERE user_name = #{user_name}
     </select>
     <insert id="create" parameterType="com.example.demo.UserPass">
-        INSERT INTO USER_PASS ( name, pass )
-        VALUES (#{name}, #{pass})
+        INSERT INTO USER_PASS ( user_id, user_name, user_pass )
+        VALUES (nextval('user_id'), #{user_name}, #{user_pass})
     </insert>
     <update id="update" parameterType="com.example.demo.UserPass">
-        UPDATE USER_PASS SET pass = #{pass}
-        WHERE name = #{name}
+        UPDATE USER_PASS SET user_pass = #{user_pass}
+        WHERE user_name = #{user_name}
     </update>
 </mapper>

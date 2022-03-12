@@ -3,35 +3,35 @@ package com.example.demo;
 public class UserPass {
 
     /** ユーザー名 */
-    private String name;
+    private String user_name;
 
     /** パスワード */
-    private String pass;
+    private String user_pass;
 
     /**
      * 指定したユーザー名・パスワードをもつUserPassオブジェクトを作成する
-     * @param name ユーザー名
-     * @param pass パスワード
+     * @param user_name ユーザー名
+     * @param user_pass パスワード
      */
-    public UserPass(String name, String pass){
-        this.setName(name);
-        this.setPass(pass);
+    public UserPass(String user_name, String user_pass){
+        this.setName(user_name);
+        this.setPass(user_pass);
     }
 
 	public String getName() {
-		return name;
+		return user_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getPass() {
-		return pass;
+		return user_pass;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPass(String user_pass) {
+		this.user_pass = user_pass;
 	}
 
 }
