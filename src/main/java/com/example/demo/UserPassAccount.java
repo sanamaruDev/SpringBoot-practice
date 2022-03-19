@@ -5,6 +5,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.example.demo.domain.UserPass;
+
 public class UserPassAccount implements UserDetails {
 
 	/** UserPassオブジェクト */
@@ -38,7 +40,7 @@ public class UserPassAccount implements UserDetails {
      */
     @Override
     public String getPassword() {
-        return userPass.getPass();
+        return userPass.getUser_pass();
     }
 
     /**
@@ -47,7 +49,7 @@ public class UserPassAccount implements UserDetails {
      */
     @Override
     public String getUsername() {
-        return userPass.getName();
+        return userPass.getUser_name();
     }
 
     /**

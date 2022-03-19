@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 
+import com.example.demo.service.UserPassAccountService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -55,6 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()    //かつ
                 //ログアウト時はログイン画面に遷移する
                 .logout().logoutSuccessUrl("/login").permitAll();
+        // 【todo】csrf無効化。後でヘッダにcsrf情報を追加
+        http.csrf().disable();
     }
  
     /**

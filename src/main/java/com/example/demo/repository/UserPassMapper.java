@@ -1,6 +1,8 @@
-package com.example.demo;
+package com.example.demo.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.demo.domain.UserPass;
 
 @Mapper
 public interface UserPassMapper {

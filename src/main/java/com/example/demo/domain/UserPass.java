@@ -1,6 +1,12 @@
-package com.example.demo;
+package com.example.demo.domain;
 
+import lombok.Data;
+
+@Data
 public class UserPass {
+
+    /** ユーザーID */
+    private String user_id;
 
     /** ユーザー名 */
     private String user_name;
@@ -14,24 +20,7 @@ public class UserPass {
      * @param user_pass パスワード
      */
     public UserPass(String user_name, String user_pass){
-        this.setName(user_name);
-        this.setPass(user_pass);
+        this.setUser_name(user_name);
+        this.setUser_pass(user_pass);
     }
-
-	public String getName() {
-		return user_name;
-	}
-
-	public void setName(String user_name) {
-		this.user_name = user_name;
-	}
-
-	public String getPass() {
-		return user_pass;
-	}
-
-	public void setPass(String user_pass) {
-		this.user_pass = user_pass;
-	}
-
 }

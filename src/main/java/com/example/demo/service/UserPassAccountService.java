@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.service;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +10,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.example.demo.UserPassAccount;
+import com.example.demo.domain.UserPass;
+import com.example.demo.domain.WorkingTime;
+import com.example.demo.repository.UserPassMapper;
+import com.example.demo.repository.WorkingTimeMapper;
+
 @Service
 public class UserPassAccountService implements UserDetailsService {
 
@@ -17,8 +23,11 @@ public class UserPassAccountService implements UserDetailsService {
      * ユーザーパスワードデータテーブル(user_pass)へアクセスするマッパー
      */
     @Autowired
-    private UserPassMapper mapper;
-
+    private UserPassMapper userPassMapper;
+    
+    @Autowired
+    private WorkingTimeMapper workingTimeMapper;
+    
     /**
      * 指定したユーザー名をもつSpring-Security用のユーザーアカウント情報を取得する
      * @param username ユーザー名
@@ -32,7 +41,7 @@ public class UserPassAccountService implements UserDetailsService {
             throw new UsernameNotFoundException("ユーザー名を入力してください");
         }
         //指定したユーザー名をもつUserPassオブジェクトを取得する
-        UserPass userPass = mapper.findByName(username);
+        UserPass userPass = userPassMapper.findByName(username);
         if(userPass == null){
             throw new UsernameNotFoundException("ユーザーが見つかりません");
         }
@@ -52,13 +61,18 @@ public class UserPassAccountService implements UserDetailsService {
             return;
         }
         //指定したユーザー名をもつUserPassオブジェクトを取得する
-        UserPass userPass = mapper.findByName(username);
+        UserPass userPass = userPassMapper.findByName(username);
         //UserPassオブジェクトが無ければ追加・あれば更新する
         if(userPass == null){
             userPass = new UserPass(username, password);
-            mapper.create(userPass);
+            userPassMapper.create(userPass);
+            
+            // 出勤時間テーブル作成
+            WorkingTime workingTime = new WorkingTime();
+            workingTime.setUser_name(username);
+            workingTimeMapper.create(workingTime);
         }else{
-            mapper.update(userPass);
+            userPassMapper.update(userPass);
         }
     }
 

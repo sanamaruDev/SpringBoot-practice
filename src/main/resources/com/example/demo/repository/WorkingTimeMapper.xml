@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.WorkingTimeMapper">
+    <resultMap id="workingTimeResultMap" type="com.example.demo.domain.WorkingTime" >
+        <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+        <result column="working_date" property="working_date" jdbcType="VARCHAR" />
+        <result column="Attendance_time" property="Attendance_time" jdbcType="VARCHAR" />
+        <result column="leaving_time" property="leaving_time" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findByNameDate" resultMap="workingTimeResultMap" parameterType="com.example.demo.domain.WorkingTime">
+        SELECT 
+			user_name
+           ,working_date
+           ,attendance_time
+           ,leaving_time
+        FROM
+        	working_time
+  		WHERE
+  			user_name = #{user_name}
+		AND
+       		working_date = #{working_date}
+    </select>
+    <insert id="create" parameterType="com.example.demo.domain.WorkingTime">
+        INSERT INTO
+        	working_time
+       	(
+       		user_name
+           ,working_date
+           ,Attendance_time
+           ,leaving_time
+  	   	)
+        VALUES
+        (
+        	#{user_name}
+        	, #{working_date}
+        	, DEFAULT
+        	, DEFAULT
+       	)
+    </insert>
+    <update id="updateAttendance" parameterType="com.example.demo.domain.UserPass">
+        UPDATE
+        	working_time
+       	SET
+       		Attendance_time = #{Attendance_time}
+        WHERE
+        	user_name = #{user_name}
+		AND
+       		working_date = #{working_date}
+    </update>
+</mapper>
