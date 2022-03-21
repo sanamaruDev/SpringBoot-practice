@@ -12,4 +12,6 @@ public interface WorkingTimeMapper {
 	void create(WorkingTime workingTime);
 
 	void updateAttendance(WorkingTime workingTime);
+
+	void updateLeaving(WorkingTime workingTime);
 }

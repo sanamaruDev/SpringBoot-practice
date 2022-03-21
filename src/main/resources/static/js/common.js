@@ -9,11 +9,11 @@ $(function(){
 // 共通ajax処理
 // ・formの値をJSON形式に変換
 // ・type="button"のvulueがcontrollerでマッピングされないために独自メソッド追加
-function cmnAjax(objForm){
+function cmnAjax(objForm, url){
 	
     let jsonData = JSON.stringify(formToJson(objForm));
     $.ajax({
-    	url: '/hello',
+    	url: url,
         type: 'post',
         data: jsonData,
         contentType : 'application/json',

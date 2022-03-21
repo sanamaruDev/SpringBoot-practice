@@ -13,19 +13,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.WorkingTime;
 import com.example.demo.service.UpdateAttendanceService;
+import com.example.demo.service.UpdateLeavingService;
 
 @Controller
-public class helloController{
+public class LeavingController{
 
 	@Autowired
-	UpdateAttendanceService service;
+	UpdateLeavingService service;
 		
 	/*
-	 * 出勤時間登録
+	 * 退勤時間登録
 	 */
 	@ResponseBody
-	@PostMapping("/hello")
-	public AttendanceForm registAttendance(@RequestBody AttendanceForm attendanceForm) {
+	@PostMapping("/leaving")
+	public LeavingForm registLeaving(@RequestBody LeavingForm leavingForm) {
 		
 		WorkingTime workingTime = new WorkingTime();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -36,11 +37,21 @@ public class helloController{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		workingTime.setWorking_date(sdf.format(date));
 		// hhmm形式
-		workingTime.setAttendance_time(String.format("%2s", attendanceForm.getDdlAttendanceHour().replace(" ", "0"))
-				+ String.format("%2s", attendanceForm.getDdlAttendanceTime().replace(" ", "0")));
+		workingTime.setLeaving_time(String.format("%2s", leavingForm.getDdlLeavingHour().replace(" ", "0"))
+				+ String.format("%2s", leavingForm.getDdlLeavingTime().replace(" ", "0")));
 	
-		service.UpdateAttendance(workingTime);
+		service.UpdateLeaving(workingTime);
 		
-		return attendanceForm;
+		return leavingForm;
 	}
+
+//	/*
+//	 * サインアウト
+//	 */
+//	@ResponseBody
+//	@PostMapping("/SignOut")
+//	public LeavingForm SignOut(@RequestBody LeavingForm leavingForm) {
+//		
+//		return leavingForm;
+//	}
 }

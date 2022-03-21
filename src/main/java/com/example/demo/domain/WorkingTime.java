@@ -9,7 +9,7 @@ public class WorkingTime {
 
 	private String working_date;
 
-	private String Attendance_time;
+	private String attendance_time;
 
 	private String leaving_time;
 

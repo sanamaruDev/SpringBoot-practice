@@ -1,16 +1,9 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.UserPassAccountService;
 
@@ -43,36 +36,4 @@ public class LoginController {
         //ログイン画面に遷移する
         return "login";
     }
-
-    /**
-     * 初期表示(検索)画面に遷移する
-     * @return 検索画面へのパス
-     */
-    @RequestMapping("/")
-    public String index(Model model){
-        // ドロップダウン
-        // 時間
-    	model.addAttribute("lstHours", this.createDropDownListHours());
-        // 分
-    	model.addAttribute("lstMinutes", this.createDropDownListMinutes());
-    	return "hello";
-    }
-
-    private List<String> createDropDownListHours() {
-    	List<String> lstHours = new ArrayList<>();
-    	for (int i = 1; i <= 9; i++) {
-	    	lstHours.add(String.valueOf(i));
-		}
-        return lstHours;
-    }
-    
-    private List<String> createDropDownListMinutes() {
-    	List<String> lstMinutes = new ArrayList<>();
-    	lstMinutes.add("00");
-    	lstMinutes.add("15");
-    	lstMinutes.add("30");
-    	lstMinutes.add("45");
-        return lstMinutes;
-    }
-
 }

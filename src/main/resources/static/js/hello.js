@@ -1,6 +1,7 @@
-// 送信ボタンクリック
+// 出勤時間登録ボタンクリック
 $(function() {
 	$('#registAttendance').click(function(){
-          cmnAjax($('#formHello'));
+          cmnAjax($('#formHello'), '/hello');
 	})	
 })
+
