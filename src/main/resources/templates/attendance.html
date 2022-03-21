@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-  <head>
-      <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hello World!</title>
+  <head th:replace="commonHeader :: meta_header('attendance')">
   </head>
   <body>
     <form th:action="@{/logout}" method="post" id="formAttendance">
+      <div th:replace="commonHeader :: header"></div>
       <h1 class="form-label" th:text="|${today} 出勤時間を設定|"></h1>
       <div class="container">
         <div class="row justify-content-start">
@@ -36,8 +34,7 @@
             </div>
         </div>
       </div>
-        <input type="button" id="registAttendance" value="出勤時間登録"/>
-        <input type="submit" value="Sign Out"/>
+      <input type="button" id="registAttendance" value="出勤時間登録"/>
     </form>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
