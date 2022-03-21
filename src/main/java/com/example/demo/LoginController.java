@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.UserPassAccountService;
 
@@ -36,4 +39,14 @@ public class LoginController {
         //ログイン画面に遷移する
         return "login";
     }
+
+    /*
+	 * サインアウト
+	 */
+	@ResponseBody
+	@PostMapping("/SignOut")
+	public AttendanceForm SignOut(@RequestBody AttendanceForm attendanceForm) {
+		
+		return attendanceForm;
+	}
 }

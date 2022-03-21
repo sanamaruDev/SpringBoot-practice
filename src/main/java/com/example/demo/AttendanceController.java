@@ -18,20 +18,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.WorkingTime;
 import com.example.demo.service.UpdateAttendanceService;
-import com.example.demo.service.UpdateLeavingService;
 
 @Controller
-public class LeavingController{
+public class AttendanceController{
 
 	@Autowired
-	UpdateLeavingService service;
+	UpdateAttendanceService service;
 		
 	/**
-     * 退勤時間登録画面へ遷移
-     * @return 退勤時間登録画面へのパス
+     * 出勤時間登録画面へ遷移
+     * @return 出勤時間登録画面へのパス
      */
-    @GetMapping("/leaving")
-    public String leaving(Model model){
+    @GetMapping("/attendance")
+    public String attendance(Model model){
         // 本日日付
     	Calendar cal = Calendar.getInstance();
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -40,15 +39,15 @@ public class LeavingController{
     	model.addAttribute("lstHours", this.createDropDownListHours());
         // 分ドロップダウン
     	model.addAttribute("lstMinutes", this.createDropDownListMinutes());
-    	return "leaving";
+    	return "attendance";
     }
 
 	/*
-	 * 退勤時間登録
+	 * 出勤時間登録
 	 */
 	@ResponseBody
-	@PostMapping("/leaving")
-	public LeavingForm registLeaving(@RequestBody LeavingForm leavingForm) {
+	@PostMapping("/attendance")
+	public AttendanceForm registAttendance(@RequestBody AttendanceForm attendanceForm) {
 		
 		WorkingTime workingTime = new WorkingTime();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -59,17 +58,17 @@ public class LeavingController{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		workingTime.setWorking_date(sdf.format(date));
 		// hhmm形式
-		workingTime.setLeaving_time(String.format("%2s", leavingForm.getDdlLeavingHour().replace(" ", "0"))
-				+ String.format("%2s", leavingForm.getDdlLeavingTime().replace(" ", "0")));
+		workingTime.setAttendance_time(String.format("%2s", attendanceForm.getDdlAttendanceHour()).replace(" ", "0")
+				+ String.format("%2s", attendanceForm.getDdlAttendanceTime()).replace(" ", "0"));
 	
-		service.UpdateLeaving(workingTime);
+		service.UpdateAttendance(workingTime);
 		
-		return leavingForm;
+		return attendanceForm;
 	}
 
     private List<String> createDropDownListHours() {
     	List<String> lstHours = new ArrayList<>();
-    	for (int i = 17; i <= 27; i++) {
+    	for (int i = 8; i <= 15; i++) {
 	    	lstHours.add(String.valueOf(i));
 		}
         return lstHours;

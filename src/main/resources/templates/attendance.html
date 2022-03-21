@@ -7,7 +7,7 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <form th:action="@{/logout}" method="post" id="formHello">
+    <form th:action="@{/logout}" method="post" id="formAttendance">
       <h1 class="form-label" th:text="|${today} 出勤時間を設定|"></h1>
       <div class="container">
         <div class="row justify-content-start">
@@ -42,6 +42,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
-    <script type="text/javascript" th:src="@{/js/hello.js}"></script>
+    <script type="text/javascript" th:src="@{/js/attendance.js}"></script>
   </body>
 </html>

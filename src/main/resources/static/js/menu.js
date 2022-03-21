@@ -1,7 +1,7 @@
 // 出勤時間登録ボタンクリック
 $(function() {
 	$('#updAttendance').click(function(){
-    location.href='/hello';
+    location.href='/attendance';
 	})	
 })
 
