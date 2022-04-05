@@ -11,13 +11,13 @@ $(function(){
 // ・type="button"のvulueがcontrollerでマッピングされないために独自メソッド追加
 function cmnAjax(objForm, url){
 	
-    let jsonData = JSON.stringify(formToJson(objForm));
-    $.ajax({
-    	url: url,
-        type: 'post',
-        data: jsonData,
-        contentType : 'application/json',
-        dataType: "json",
+  let jsonData = JSON.stringify(formToJson(objForm));
+  $.ajax({
+  	url: url,
+      type: 'post',
+      data: jsonData,
+      contentType : 'application/json',
+      dataType: "json",
  	})     
  	.done(function(data) {
 		// data にサーバーから返された html が入る
