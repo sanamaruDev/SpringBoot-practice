@@ -1,29 +1,14 @@
-# README #
+# 出勤退勤時間の登録、一覧機能
 
-This README would normally document whatever steps are necessary to get your application up and running.
+* 出勤時間登録
+* 退勤時間登録
+* 一覧機能
 
-### What is this repository for? ###
+# PG
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* springboot
+* bootstrap
 
-### How do I get set up? ###
+# DB
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* POSTGRESQL
