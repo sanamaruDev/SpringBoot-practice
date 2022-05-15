@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head th:replace="commonHeader :: meta_header('attendance')">
+  </head>
+  <body>
+    <form th:action="@{/logout}" method="post" id="formAttendance">
+      <div th:replace="commonHeader :: header"></div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>出勤時刻</th>
+              <th>退勤時刻</th>
+            </tr>
+          </thead>
+            <tr th:if="${!#lists.isEmpty(workingTimelist)}" th:each="workingTime : ${workingTimelist}">
+              <td th:text="${workingTime.working_date}">/td>
+              <td th:text="${workingTime.attendance_time}">/td>
+              <td th:text="${workingTime.leaving_time}">/td>
+            </tr>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/viewWorkingTimeList.js}"></script>
+    <script type="text/javascript" th:src="@{/js/commonHeader.js}"></script>
+  </body>
+</html>

@@ -11,3 +11,10 @@ $(function() {
     location.href='/leaving';
 	})	
 })
+
+// 一覧表示ボタンクリック
+$(function() {
+  $('#viewWorkingTimeList').click(function(){
+    location.href='/viewWorkingTimeList';
+  })  
+})
