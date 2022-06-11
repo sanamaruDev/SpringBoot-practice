@@ -12,3 +12,11 @@
 # DB
 
 * POSTGRESQL
+
+# test
+* spock
+
+```
+mvnw clean test
+```
+
